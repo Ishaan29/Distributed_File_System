@@ -34,3 +34,50 @@ func main() {
 	select {}
 	//fmt.Println("Hello!, welcome to the world of go.")
 }
+
+// sandbox code // TODO: remove this
+
+// type Task struct {
+// 	ID   int
+// 	msg  string
+// 	done chan bool
+// }
+
+// func scheduler() chan Task {
+// 	queue := make(chan Task)
+// 	go func() {
+// 		for i := 0; i < 10; i++ {
+// 			fmt.Printf("Scheduler: sending task %d\n", i)
+// 			q := Task{
+// 				ID:   i,
+// 				msg:  fmt.Sprintf("Task %d", i),
+// 				done: make(chan bool),
+// 			}
+// 			queue <- q
+// 			// time.Sleep(time.Second * 2)
+// 		}
+// 		close(queue)
+// 	}()
+// 	return queue
+// }
+
+// func worker(id int, queue <-chan Task, wg *sync.WaitGroup) {
+// 	defer wg.Done()
+// 	for task := range queue {
+// 		fmt.Printf("Worker %d received task %d: %s\n", id, task.ID, task.msg)
+// 		time.Sleep(time.Second * 2)
+// 		task.done <- true
+// 		close(task.done)
+// 	}
+// 	fmt.Printf("Worker %d finished\n", id)
+// }
+// func main() {
+// 	queue := scheduler()
+// 	var wg sync.WaitGroup
+// 	for i := 0; i < 1; i++ {
+// 		wg.Add(1)
+// 		go worker(i, queue, &wg)
+// 	}
+
+// 	wg.Wait()
+// }
